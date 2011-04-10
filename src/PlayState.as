@@ -1,5 +1,7 @@
 package
 {
+	import com.greensock.TweenLite;
+	
 	import flash.external.ExternalInterface;
 	
 	import org.flixel.*;
@@ -31,7 +33,11 @@ package
 				
 				var i:int = 1;
 				for each (var enemy:String in s.split(",")) {
-					add(new TextEnemy(0, 30 * i, FlxG.width, enemy));
+					var te:TextEnemy = new TextEnemy(0, 30 * i, FlxG.width, enemy);
+					te.UpdatePositionAI = function (x:Number, y:Number):FlxPoint {
+						
+					}
+					add();
 					i++;
 				}
 //			} catch (e:Error) {

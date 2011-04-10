@@ -5,7 +5,6 @@ package
 	
 	public class TextEnemy extends FlxText
 	{
-		public var UpdatePositionAI:Function;
 		
 		public function TextEnemy(X:Number, Y:Number, Width:uint, Text:String=null, EmbeddedFont:Boolean=true)
 		{
@@ -15,12 +14,6 @@ package
 		override public function update():void
 		{
 			super.update();
-			
-			if (UpdatePositionAI != null) {
-				var newPos:FlxPoint = UpdatePositionAI(this.x, this.y);
-				this.x = newPos.x;
-				this.y = newPos.y;
-			}
 		}
 	}
 }
