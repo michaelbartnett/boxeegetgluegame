@@ -34,10 +34,7 @@ package
 				var i:int = 1;
 				for each (var enemy:String in s.split(",")) {
 					var te:TextEnemy = new TextEnemy(0, 30 * i, FlxG.width, enemy);
-					te.UpdatePositionAI = function (x:Number, y:Number):FlxPoint {
-						
-					}
-					add();
+					add(te);
 					i++;
 				}
 //			} catch (e:Error) {
