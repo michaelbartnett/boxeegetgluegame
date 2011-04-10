@@ -57,8 +57,8 @@ package
 		
 		private function updateDimensions():void
 		{
-			this.width = textObj.frameWidth;
-			this.health = textObj.frameHeight;
+			this.width = textObj.TextWidth;
+			this.height = textObj.TextHeight;
 		}
 	}
 }
