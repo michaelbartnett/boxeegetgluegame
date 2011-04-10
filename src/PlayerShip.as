@@ -1,5 +1,6 @@
 package
 {
+	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	
@@ -15,6 +16,7 @@ package
 	
 		public function shoot():void
 		{
+			
 		}
 		
 		public function moveLeft():void
@@ -30,7 +32,18 @@ package
 		override public function update():void
 		{
 			super.update();
+			checkBounds();
 			velocity.x = 0;
+		}
+		
+		private function checkBounds():void
+		{
+			if (x < 0) {
+				x = 0;
+			}
+			if (x + frameWidth > FlxG.width) {
+				x = FlxG.width - frameWidth;
+			}
 		}
 	}
 }

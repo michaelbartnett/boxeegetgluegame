@@ -5,7 +5,7 @@ package
 	
 	public class TextEnemy extends FlxText
 	{
-		public function UpdatePositionAI(currentX:Number, currentY:Number):FlxPoint;
+		public var UpdatePositionAI:Function;
 		
 		public function TextEnemy(X:Number, Y:Number, Width:uint, Text:String=null, EmbeddedFont:Boolean=true)
 		{

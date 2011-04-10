@@ -8,7 +8,7 @@ package
 	{
 		public function HackathonSP11()
 		{
-			super(1280,720,MenuState,2);
+			super(1280, 720, MenuState,1);
 		}
 	}
 }
