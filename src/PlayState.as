@@ -20,9 +20,18 @@ package
 		private var enemyList:Vector.<TextEnemy> = new Vector.<TextEnemy>();
 		private var enemyManager:EnemyManager;
 		
+		//Scrolling background
+		[Embed(source="../assets/background.png")]private static var MainBackdrop:Class;
+		private var bg1:FlxBackdrop = new FlxBackdrop(MainBackdrop, 0, 1);
+		
+		[Embed(source="../assets/backgroundOverlay.png")]private static var OverlayBackdrop:Class;
+		private var bg2:FlxBackdrop = new FlxBackdrop(OverlayBackdrop, 0, 100);
 		
 		override public function create():void
 		{
+			add(bg1);
+			add(bg2);
+			
 			add(new FlxText(0,0,100,"INSERT GAME HERE"));
 			player = new PlayerShip(0, 0, ShipImg);
 			player.y = FlxG.height - player.frameHeight;
@@ -43,6 +52,7 @@ package
 				var te:TextEnemy = new TextEnemy(FlxG.width / 2, -20, FlxG.width, enemy);
 				te.visible = false;
 				te.active = false;
+				te.size = 24;
 				add(te);
 				enemyList.push(te);
 				i++;
