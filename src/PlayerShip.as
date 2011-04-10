@@ -3,6 +3,7 @@ package
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxText;
 	
 	public class PlayerShip extends FlxSprite
 	{
@@ -21,18 +22,20 @@ package
 		
 		public function moveLeft():void
 		{
+			
 			velocity.x = -MoveAcceleration;
 		}
 		
 		public function moveRight():void
 		{
-			velocity.x = MoveAcceleration;
+			velocity.x = MoveAcceleration;	
 		}
 		
 		override public function update():void
 		{
 			super.update();
 			checkBounds();
+			
 			velocity.x = 0;
 		}
 		

@@ -16,9 +16,11 @@ package
 		{
 			super.update();
 			
-			var newPos:FlxPoint = UpdatePositionAI(this.x, this.y);
-			this.x = newPos.x;
-			this.y = newPos.y;
+			if (UpdatePositionAI != null) {
+				var newPos:FlxPoint = UpdatePositionAI(this.x, this.y);
+				this.x = newPos.x;
+				this.y = newPos.y;
+			}
 		}
 	}
 }
