@@ -1,7 +1,19 @@
 Boxee/GetGlue Game
 ------------------
 
-## Here's the plan: ##
+##TODO List
+
+* Collision with Bullets and TextEnemies
+
+* Scoring System
+
+* Music
+
+* SFX
+
+* Play back EnemyManager.sendOneOff() in sequence
+
+##Here's the plan:
 
 1. Player runs App
 
