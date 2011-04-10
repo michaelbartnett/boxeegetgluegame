@@ -19,6 +19,8 @@ package
 		public function explode():void
 		{
 			Tweener.kill();
+			this.active = false;
+			this.visible = false;
 		}
 	}
 }

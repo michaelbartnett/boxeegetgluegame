@@ -72,7 +72,8 @@ package
 					//FlxG.log("Enemy dimensions: " + enemy.width + "x" + enemy.height);
 					for each (var bullet:Bullet in GameData.BulletGroup.members) {
 						if (bullet.active && bullet.overlaps(enemy)) {
-							FlxG.log("Collision!!!!!!!!!!!!!!");
+							enemy.explode();
+							bullet.explode();
 						}
 					}
 				}
