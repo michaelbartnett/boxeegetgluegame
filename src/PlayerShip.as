@@ -1,5 +1,7 @@
 package
 {
+	import com.greensock.TweenLite;
+	
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
@@ -9,15 +11,19 @@ package
 	{
 		private var horizontalMove:int = 0;
 		public var MoveAcceleration:Number = 0;
+		public var Bullets:Vector.<Bullet>;
 		
 		public function PlayerShip(X:Number=0, Y:Number=0, SimpleGraphic:Class=null)
 		{
 			super(X, Y, SimpleGraphic);
+			Bullets = new Vector.<Bullet>();
 		}
 	
 		public function shoot():void
 		{
-			
+			var bullet:Bullet = new Bullet(x + 1 + frameWidth / 2, y - 25);
+			FlxG.state.add(bullet);
+			TweenLite.to(bullet, 1.5, {y:0});
 		}
 		
 		public function moveLeft():void
