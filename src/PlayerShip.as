@@ -13,7 +13,7 @@ package
 		private var horizontalMove:int = 0;
 		public var MoveAcceleration:Number = 0;
 		private var bulletSpeed:int = 2;
-		private var numberOfBullets:int = 15;
+		private var numberOfBullets:int = 20;
 		private var Bullets:Vector.<Bullet>;
 		
 		public function PlayerShip(X:Number=0, Y:Number=0, SimpleGraphic:Class=null)
@@ -26,6 +26,7 @@ package
 				bullet.active = false;
 				bullet.visible = false;
 				Bullets.push(bullet);
+				GameData.BulletGroup.add(bullet);
 			}
 		}
 	
@@ -39,8 +40,7 @@ package
 					bullet.visible = true;
 					bullet.x = x + 1 + frameWidth / 2;
 					bullet.y = y - 25;
-					FlxG.state.add(bullet);
-					TweenLite.to(bullet, bulletSpeed, {y:0, ease:Linear.easeNone,
+					bullet.Tweener = TweenLite.to(bullet, bulletSpeed, {y:0, ease:Linear.easeNone,
 						onComplete: function():void
 						{
 							bullet.visible = false;

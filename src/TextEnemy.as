@@ -15,5 +15,10 @@ package
 		{
 			super.update();
 		}
+		
+		public function explode():void
+		{
+			
+		}
 	}
 }

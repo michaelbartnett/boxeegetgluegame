@@ -51,7 +51,7 @@ package
 				te.visible = false;
 				te.active = false;
 				te.size = 24;
-				GameData.ForegroundGroup.add(te);
+				GameData.EnemyGroup.add(te);
 				enemyList.push(te);
 				i++;
 			}
@@ -65,6 +65,7 @@ package
 			
 			add(GameData.BackgroundGroup);
 			add(GameData.BulletGroup);
+			add(GameData.EnemyGroup);
 			add(GameData.ForegroundGroup);
 			
 			
@@ -77,6 +78,10 @@ package
 			super.update();
 			
 			playerText.text = "PLAYERPOS: " + player.x + "," + player.y + "\nOFFSET: " + player.offset.x + "," + player.offset.y;
+			if (FlxU.collide(GameData.BulletGroup, GameData.EnemyGroup, function(bullet:Bullet, enemy:TextEnemy)):void
+			{
+				bullet.explode()
+			});
 			
 			handleInput();
 		}
