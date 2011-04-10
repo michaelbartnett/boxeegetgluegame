@@ -19,7 +19,6 @@ package
 		public function explode():void
 		{
 			Tweener.kill();
-			FlxG.log("asdf");
 		}
 	}
 }

@@ -18,7 +18,7 @@ package
 		
 		public function explode():void
 		{
-			
+			addAnimation("explo1.png", [8], 12, false);
 		}
 	}
 }
