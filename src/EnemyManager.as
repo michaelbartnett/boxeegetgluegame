@@ -9,7 +9,6 @@ package
 	public class EnemyManager
 	{
 		private var enemyList:Vector.<TextEnemy> = new Vector.<TextEnemy>();
-		private var enemyPointer:int = 0;
 		
 		public function EnemyManager(enemies:Vector.<TextEnemy>)
 		{
@@ -18,21 +17,24 @@ package
 		
 		public function sendOneOff(speed:Number):void
 		{
-			var enemy:TextEnemy = enemyList[enemyPointer];
-			enemy.active = true;
-			enemy.visible = true;
-			enemy.x = FlxU.random() * FlxG.width;
-			enemy.y = -enemy.frameHeight;
-			FlxG.log("Sending an enemy off! (" + enemy.text + ")");
-			
-			TweenLite.to(enemy, speed, {y:FlxG.height, ease:Quart.easeIn,
-				onComplete: function():void {
-					enemy.visible = false;
-					enemy.active = false;
-					FlxG.log("enemy: '" + enemy.text + "' has finished moving.");
+			for each (var enemy:TextEnemy in enemyList) {
+				if (!enemy.active) {
+					enemy.active = true;
+					enemy.visible = true;
+					enemy.x = FlxU.random() * (FlxG.width - 50) + 25;
+					enemy.y = -enemy.frameHeight;
+					FlxG.log("Sending an enemy off! (" + enemy.text + ")");
+					
+					TweenLite.to(enemy, speed, {y:FlxG.height, ease:Quart.easeIn,
+						onComplete: function():void {
+							enemy.visible = false;
+							enemy.active = false;
+//							FlxG.log("enemy: '" + enemy.text + "' has finished moving.");
+						}
+					});
+					break;
 				}
-			});
-			enemyPointer = enemyPointer + 1 >= enemyList.length ? 0 : enemyPointer + 1;
+			}
 		}
 	}
 }
