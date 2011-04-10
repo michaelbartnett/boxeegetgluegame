@@ -55,6 +55,9 @@ package org.flixel
 			calcFrame();
 		}
 		
+		public function get TextWidth():Number { return _tf.textWidth; }
+		public function get TextHeight():Number { return _tf.textHeight; }
+		
 		/**
 		 * You can use this if you have a lot of text parameters
 		 * to set instead of the individual properties.

@@ -39,12 +39,13 @@ package
 			
 			var i:int = 1;
 			for each (var enemy:String in s.split(",")) {
-				var te:TextEnemy = new TextEnemy(FlxG.width / 2, -20, FlxG.width, enemy);
+				var te:TextEnemy = new TextEnemy(FlxG.width / 2, -20, enemy);
 				te.visible = false;
 				te.active = false;
 				te.size = 24;
 				GameData.EnemyGroup.add(te);
 				enemyList.push(te);
+				FlxG.log("TextEnemy dimensions: " + te.width + "x" + te.health);
 				i++;
 			}
 			
@@ -58,16 +59,26 @@ package
 			
 			GameData.BackgroundGroup.add(bg1);
 			GameData.BackgroundGroup.add(bg2);
+			
 		}
 		
 		override public function update():void
 		{
 			super.update();
-
-			FlxU.overlap(GameData.BulletGroup, GameData.EnemyGroup, function(bullet:Bullet, enemy:TextEnemy):void
-			{
-				bullet.explode();
-			});
+			
+//			FlxU.overlap(GameData.BulletGroup, GameData.EnemyGroup, function(bullet:Bullet, player:PlayerShip):void {
+//				FlxG.log("COLLISION TIME YO!!!!!");
+//			});
+			
+			for each (var enemy:TextEnemy in GameData.EnemyGroup.members) {
+				
+//				FlxG.log("Enemy dimensions: " + enemy.width + "x" + enemy.height);
+				for each (var bullet:Bullet in GameData.BulletGroup.members) {
+					if (bullet.overlaps(enemy)) {
+						FlxG.log("Collision!!!!!!!!!!!!!!");
+					}
+				}
+			}
 
 			handleInput();
 		}
