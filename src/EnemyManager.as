@@ -30,6 +30,7 @@ package
 						onComplete: function():void {
 							enemy.visible = false;
 							enemy.active = false;
+							enemy.update();
 //							FlxG.log("enemy: '" + enemy.text + "' has finished moving.");
 						}
 					});
