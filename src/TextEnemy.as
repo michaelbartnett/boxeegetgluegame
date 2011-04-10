@@ -3,16 +3,20 @@ package
 	import org.flixel.FlxG;
 	import org.flixel.FlxObject;
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
 	
 	public class TextEnemy extends FlxObject
 	{
+		[Embed(source="../assets/explo1.png")] private static var ExplosionImg:Class;
+		private var sprite:FlxSprite;
 		private var textObj:FlxText;
 		
 		public function TextEnemy(X:Number, Y:Number, Text:String=null, EmbeddedFont:Boolean=true)
 		{
 			super(X, Y);
 			textObj = new FlxText(X, Y, FlxG.width, Text, EmbeddedFont);
+			sprite.loadGraphic(ExplosionImg);
 			GameData.ForegroundGroup.add(textObj);
 			updateDimensions();
 			this.width = textObj.frameWidth;
@@ -52,7 +56,7 @@ package
 		
 		public function explode():void
 		{
-			
+			sprite.addAnimation("explo1.png", [8], 12, false);
 		}
 		
 		private function updateDimensions():void
