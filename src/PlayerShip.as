@@ -21,8 +21,8 @@ package
 	
 		public function shoot():void
 		{
-			var bullet:Bullet = new Bullet(x + 1 + frameWidth / 2, y - 25);
-			FlxG.state.add(bullet);
+			var bullet:Bullet = new Bullet(x + 1 + frameWidth / 2, y);
+			GameData.BulletGroup.add(bullet);
 			TweenLite.to(bullet, 1.5, {y:0});
 		}
 		

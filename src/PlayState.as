@@ -29,14 +29,12 @@ package
 		
 		override public function create():void
 		{
-			add(bg1);
-			add(bg2);
 			
 			add(new FlxText(0,0,100,"INSERT GAME HERE"));
 			player = new PlayerShip(0, 0, ShipImg);
 			player.y = FlxG.height - player.frameHeight;
 			player.MoveAcceleration = 200.0;
-			add(player);
+			GameData.ForegroundGroup.add(player);
 			
 			var s:String;
 			try {
@@ -53,7 +51,7 @@ package
 				te.visible = false;
 				te.active = false;
 				te.size = 24;
-				add(te);
+				GameData.ForegroundGroup.add(te);
 				enemyList.push(te);
 				i++;
 			}
@@ -64,6 +62,14 @@ package
 			add(debugLText);
 			add(debugRText);
 			add(debugSText);
+			
+			add(GameData.BackgroundGroup);
+			add(GameData.BulletGroup);
+			add(GameData.ForegroundGroup);
+			
+			
+			GameData.BackgroundGroup.add(bg1);
+			GameData.BackgroundGroup.add(bg2);
 		}
 		
 		override public function update():void
