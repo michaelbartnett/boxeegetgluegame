@@ -1,5 +1,6 @@
 package
 {
+	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 
 	public class GameData

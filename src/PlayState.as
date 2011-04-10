@@ -9,7 +9,6 @@ package
 
 	public class PlayState extends FlxState
 	{
-		[Embed(source="../assets/ship.png")] private static var ShipImg:Class;
 		private var player:PlayerShip;
 		
 		private var enemyList:Vector.<TextEnemy> = new Vector.<TextEnemy>();
@@ -24,7 +23,7 @@ package
 		
 		override public function create():void
 		{
-			player = new PlayerShip(0, 0, ShipImg);
+			player = new PlayerShip(0, 0);
 			player.y = FlxG.height - player.frameHeight;
 			player.MoveAcceleration = 200.0;
 			GameData.ForegroundGroup.add(player);

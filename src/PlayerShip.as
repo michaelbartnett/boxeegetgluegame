@@ -5,6 +5,7 @@ package
 	
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxSound;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
 	
@@ -16,9 +17,14 @@ package
 		private var numberOfBullets:int = 15;
 		private var Bullets:Vector.<Bullet>;
 		
-		public function PlayerShip(X:Number=0, Y:Number=0, SimpleGraphic:Class=null)
+		[Embed(source="../assets/ship.png")] private static var ShipImg:Class;
+		
+		[Embed(source = "../assets/shoot.mp3")] private static var ShootSnd:Class;
+		private var shootSnd:FlxSound = new FlxSound();
+		
+		public function PlayerShip(X:Number=0, Y:Number=0)
 		{
-			super(X, Y, SimpleGraphic);
+			super(X, Y, ShipImg);
 			Bullets = new Vector.<Bullet>();
 			for (var i:int = 0; i < numberOfBullets; i++)
 			{
@@ -27,6 +33,8 @@ package
 				bullet.visible = false;
 				Bullets.push(bullet);
 			}
+			
+			shootSnd.loadEmbedded(ShootSnd);
 		}
 	
 		public function shoot():void
@@ -47,6 +55,8 @@ package
 							bullet.active = false;
 						}
 					});
+					
+					shootSnd.play();
 					break;
 				}
 			}
