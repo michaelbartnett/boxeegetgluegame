@@ -6,7 +6,7 @@ package
 
 	public class PlayState extends FlxState
 	{
-		[Embed(source="../assets/ship.png")] private var ShipImg:Class;
+		[Embed(source="../assets/ship.png")] private static var ShipImg:Class;
 		private var player:PlayerShip;
 		
 		private var playerText:FlxText = new FlxText(200, 350, FlxG.width - 200, "PLAYERPOS:");
@@ -17,7 +17,7 @@ package
 		override public function create():void
 		{
 			add(new FlxText(0,0,100,"INSERT GAME HERE"));
-		
+		bgColor = 0xffffffff;
 			player = new PlayerShip(0, 0, ShipImg);
 			player.y = FlxG.height - player.frameHeight;
 			player.MoveAcceleration = 200.0;
