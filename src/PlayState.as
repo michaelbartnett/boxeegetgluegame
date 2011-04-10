@@ -18,6 +18,7 @@ package
 		private var debugSText:FlxText = new FlxText(200, 240, FlxG.width, "SPACET!!");
 		
 		private var enemyList:Vector.<TextEnemy> = new Vector.<TextEnemy>();
+		private var enemyManager:EnemyManager;
 		
 		
 		override public function create():void
@@ -28,19 +29,26 @@ package
 			player.MoveAcceleration = 200.0;
 			add(player);
 			
-//			try {
-				var s:String = ExternalInterface.call("getTextToShoot");
-				
-				var i:int = 1;
-				for each (var enemy:String in s.split(",")) {
-					var te:TextEnemy = new TextEnemy(0, 30 * i, FlxG.width, enemy);
-					add(te);
-					i++;
-				}
-//			} catch (e:Error) {
-//				FlxG.log("Error: " + e.message);
-//				add(new FlxText(300, 300, FlxG.width, "GOT AN ERROR"));
-//			}
+			var s:String;
+			try {
+				s = ExternalInterface.call("getTextToShoot");
+			} catch (e:Error) {
+				FlxG.log("Error: " + e.message);
+				FlxG.log("Adding dummy data.");
+				s = "Power Rangers,Rugrats,Miley Cyrus,Gossip Girl,Jersey Shore,Chuck,Doctor Who,Star Trek,Priceline Negotiator";
+			}
+			
+			var i:int = 1;
+			for each (var enemy:String in s.split(",")) {
+				var te:TextEnemy = new TextEnemy(FlxG.width / 2, -20, FlxG.width, enemy);
+				te.visible = false;
+				te.active = false;
+				add(te);
+				enemyList.push(te);
+				i++;
+			}
+			
+			enemyManager = new EnemyManager(enemyList);
 			
 			add(playerText);
 			add(debugLText);
@@ -73,6 +81,9 @@ package
 			if (FlxG.keys.SPACE) {
 				player.shoot();
 				debugSText.visible = true;
+			}
+			if (FlxG.keys.justPressed("E")) {
+				enemyManager.sendOneOff(2.0);
 			}
 		}
 	}
