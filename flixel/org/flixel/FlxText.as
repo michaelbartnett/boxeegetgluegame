@@ -55,6 +55,11 @@ package org.flixel
 			calcFrame();
 		}
 		
+		public function get Dimensions():FlxPoint
+		{
+			return new FlxPoint(_tf.textWidth, _tf.textHeight);
+		}
+		
 		/**
 		 * You can use this if you have a lot of text parameters
 		 * to set instead of the individual properties.

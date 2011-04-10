@@ -47,7 +47,8 @@ package
 					bullet.active = true;
 					bullet.visible = true;
 					bullet.x = x + 1 + frameWidth / 2;
-					bullet.y = y - 25;
+//					bullet.y = y - 25;
+					bullet.y = y;
 					bullet.Tweener = TweenLite.to(bullet, bulletSpeed, {y:0, ease:Linear.easeNone,
 						onComplete: function():void
 						{

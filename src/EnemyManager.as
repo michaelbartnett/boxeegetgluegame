@@ -21,9 +21,10 @@ package
 				if (!enemy.active) {
 					enemy.active = true;
 					enemy.visible = true;
-					enemy.x = FlxU.random() * (FlxG.width - 50) + 25;
+//					enemy.x = FlxU.random() * (FlxG.width - 50) + 25;
+					enemy.x = 50;
 					enemy.y = -enemy.frameHeight;
-					FlxG.log("Sending an enemy off! (" + enemy.text + ")");
+//					FlxG.log("Sending an enemy off! (" + enemy.text + ")");
 					
 					TweenLite.to(enemy, speed, {y:FlxG.height, ease:Quart.easeIn,
 						onComplete: function():void {
