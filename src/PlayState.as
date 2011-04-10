@@ -46,6 +46,7 @@ package
 				GameData.EnemyGroup.add(te);
 				enemyList.push(te);
 				FlxG.log("TextEnemy dimensions: " + te.width + "x" + te.health);
+				te.update();
 				i++;
 			}
 			
@@ -66,16 +67,13 @@ package
 		{
 			super.update();
 			
-//			FlxU.overlap(GameData.BulletGroup, GameData.EnemyGroup, function(bullet:Bullet, player:PlayerShip):void {
-//				FlxG.log("COLLISION TIME YO!!!!!");
-//			});
-			
 			for each (var enemy:TextEnemy in GameData.EnemyGroup.members) {
-				
-//				FlxG.log("Enemy dimensions: " + enemy.width + "x" + enemy.height);
-				for each (var bullet:Bullet in GameData.BulletGroup.members) {
-					if (bullet.overlaps(enemy)) {
-						FlxG.log("Collision!!!!!!!!!!!!!!");
+				if (enemy.active) {
+					//FlxG.log("Enemy dimensions: " + enemy.width + "x" + enemy.height);
+					for each (var bullet:Bullet in GameData.BulletGroup.members) {
+						if (bullet.active && bullet.overlaps(enemy)) {
+							FlxG.log("Collision!!!!!!!!!!!!!!");
+						}
 					}
 				}
 			}
