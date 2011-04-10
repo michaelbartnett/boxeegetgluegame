@@ -1,6 +1,7 @@
 package
 {
 	import com.greensock.TweenLite;
+	import com.greensock.easing.Linear;
 	
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
@@ -11,19 +12,44 @@ package
 	{
 		private var horizontalMove:int = 0;
 		public var MoveAcceleration:Number = 0;
-		public var Bullets:Vector.<Bullet>;
+		private var bulletSpeed:int = 2;
+		private var numberOfBullets:int = 15;
+		private var Bullets:Vector.<Bullet>;
 		
 		public function PlayerShip(X:Number=0, Y:Number=0, SimpleGraphic:Class=null)
 		{
 			super(X, Y, SimpleGraphic);
 			Bullets = new Vector.<Bullet>();
+			for (var i:int = 0; i < numberOfBullets; i++)
+			{
+				var bullet:Bullet = new Bullet();
+				bullet.active = false;
+				bullet.visible = false;
+				Bullets.push(bullet);
+			}
 		}
 	
 		public function shoot():void
 		{
-			var bullet:Bullet = new Bullet(x + 1 + frameWidth / 2, y);
-			GameData.BulletGroup.add(bullet);
-			TweenLite.to(bullet, 1.5, {y:0});
+			for each (var bullet:Bullet in Bullets)
+			{
+				if (!bullet.active)
+				{
+					bullet.active = true;
+					bullet.visible = true;
+					bullet.x = x + 1 + frameWidth / 2;
+					bullet.y = y - 25;
+					FlxG.state.add(bullet);
+					TweenLite.to(bullet, bulletSpeed, {y:0, ease:Linear.easeNone,
+						onComplete: function():void
+						{
+							bullet.visible = false;
+							bullet.active = false;
+						}
+					});
+					break;
+				}
+			}
 		}
 		
 		public function moveLeft():void

@@ -94,7 +94,7 @@ package
 				player.moveRight();
 				debugRText.visible = true;
 			}
-			if (FlxG.keys.SPACE) {
+			if (FlxG.keys.justPressed("SPACE")) {
 				player.shoot();
 				debugSText.visible = true;
 			}
